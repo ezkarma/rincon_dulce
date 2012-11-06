@@ -1,0 +1,15 @@
+div#voverlay {
+	background-image:url(http://lh3.ggpht.com/_dsEG33PDaHw/TS4v3rLaJ8I/AAAAAAAAAi0/QsGggfhhkwg/s576/white.png);
+	width:640px;
+	height:480px;
+	display:none;
+	padding:51px 30px 32px 30px;
+}
+div#voverlay div.close {
+	background-image:url(http://lh5.ggpht.com/_dsEG33PDaHw/TS4v3Vtd9PI/AAAAAAAAAiw/kGSoC3fTrng/close.png);	position:absolute;
+	right:28px;
+	top:24px;
+	cursor:pointer;
+	height:18px;
+	width:45px;
+}

@@ -1,436 +1,203 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../assets/css/softblue.css" rel="stylesheet" type="text/css">
-<!--link href="../assets/css/style6.css" rel="stylesheet" type="text/css"-->
-<link href="../assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-
-<?php include("views/nav_bar.phtml"); ?>
-<br>
-<?php
-
-require("models/ConnectionClass.php");
-require("models/Universidad.php");
-require("models/UniversidadTemporal.php");
-require("models/Alumno.php");
-require("models/Profesor.php");
-require("models/Mensaje.php");
-require("models/AlumnoTemporal.php");
-require("models/ProfesorTemporal.php");
-require("models/Archivo.php");
-require("models/Reporte.php");
-
-require("controllers/ControladorUniversidad.php");
-require("controllers/ControladorAlumno.php");
-require("controllers/ControladorAlumnoTemporal.php");
-require("controllers/ControladorMensaje.php");
-require("controllers/ControladorProfesor.php");
-require("controllers/ControladorUniversidadTemporal.php");
-require("controllers/ControladorProfesorTemporal.php");
-require("controllers/ControladorReportes.php");
-require("controllers/ControladorArchivo.php");
- 
-
-
-if(!empty($_GET["dir"])){
-$direccion=$_GET["dir"];
-
-switch($direccion){
-
-case 'mensajes': 
-		$var = $_GET["id"];
-		ControladorMensaje::desplegar_mensajes($var);
-	break;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <title>El Rincon Dulce</title>
+  <link rel="shortcut icon" type="image/ico" href="assets/imagenes/fondo1.png"/>
+	<!---TEMA -->
+	<link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="cart/css/styles.css" />
+	<link rel="stylesheet" href="banner/styles.css" />
 	
-case 'nuevoMsg':
-		$id = $_GET["id"];
-		ControladorMensaje::nuevo_Mensaje($id);
-		break;
-		
-case 'enviarMsg':
-		$id = $_GET["id"];
-		ControladorMensaje::enviar_Msg($id);
-		break;
-		
-case 'eliminarMsg':
-		$idMsg = $_GET["idMsg"];
-		$idAlu = $_GET["idAlu"];
-		ControladorMensaje::eliminar_mensajes($idMsg,$idAlu);
-		break;
-		
-case 'detallesMsg':
-		$idAlu = $_GET["idAlu"];
-		$idMsg = $_GET["idMsg"];
-		ControladorMensaje::detalles_mensajes($idMsg,$idAlu);
-		break;
-		
-case 'historial':
-		$var = $_GET["id"];
-		$ord = $_GET["ord"];
-		ControladorMensaje::desplegar_historial($var, $ord);
-		break;
-
-case 'editar': if(!empty($_GET["controller"])){
+	<!-- Barra de Menu -->
+	<link href="assets/css/softblue.css" rel="stylesheet" type="text/css">	
 	
-		if($_GET["controller"]=='universidades'){
-		$var = $_GET["id"];
-		ControladorUniversidad::editar_universidad($var);	
-		}	
-		
-		if($_GET["controller"]=='profesores'){
-		$var = $_GET["id"];
-		ControladorProfesor::editar_profesor($var);	
-		}	
-		
-		if($_GET["controller"]=='alumnos'){
-		$var = $_GET["id"];
-		ControladorAlumno::editar_alumno($var);	
-		}	
-		
-		if($_GET["controller"]=='alumnostemporal'){
-		$var = $_GET["id"];
-		ControladorAlumno::editar_alumnotemporal($var);	
-		}	
+	<!-- Banner-->	
+	<link rel="stylesheet" href="banner/style.css" type="text/css" media="screen" />
+	<script type="text/javascript">var _siteRoot='index.html',_root='index.html';</script>
+	<script type="text/javascript" src="banner/js/jquery.js"></script>
+	<script type="text/javascript" src="banner/js/scripts.js"></script>
+	
+	<!-- Menú Vertical -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="all" />
+	<link href="assets/css/dcdrilldown.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/demo.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.dcdrilldown.1.2.min.js"></script>
+
+
+	<!---div id="logo" align="center" ><img src='assets/imagenes/logo_herme.png'---IMAGEN-->
+	<br>
+	<br>
+
+	
+	<style type="text/css">	 
+	.izquierda {  
+         padding-left: 5px;  
+    } 
+   
+    .derecha {  
+         padding-right: 50px;  
+    }  
+	.centro
+	{
+		display: block;
+		margin-left: auto;
+		margin-right: auto
 	}
-
-;break;
-
-case 'mostrar': if(!empty($_GET["controller"])){
-
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::desplegar_alumnos();	
-		}
-		if($_GET["controller"]=='alumnoTemporal'){	
-			ControladorAlumno::desplegar_alumnosTemporal();				
-		}	
-
-		if($_GET["controller"]=='universidades'){
-		ControladorUniversidad::desplegar_universidades();	
-		}
-		
-		if($_GET["controller"]=='profesores'){
-		ControladorProfesor::desplegar_profesores();
-		}
-		
-		if($_GET["controller"]=='reportesAlumnos'){
-		ControladorReportes::reporte_alumnos();
-		}
-		if($_GET["controller"]=='reportesProfesores'){
-		ControladorReportes::reporte_profesores();
-		}	
-		if($_GET["controller"]=='reportesUniversidades'){
-		ControladorReportes::reporte_universidades();
-		}
-		if($_GET["controller"]=='archivos'){
-		ControladorArchivo::desplegar_archivos();	
-		}
 	}
-
-;break;
-
-case 'vincular': if(!empty($_GET["controller"])){
-	
-		if($_GET["controller"]=='universidades'){
-		
-		$universidades = UniversidadTemporal::cargar();
-		foreach($universidades as $uni){
-		echo $uni->nombre." : ";
-			if(isset($_POST[$uni->id])){
-			//UniversidadTemporal::guardar($uni->nombre); 
-			echo "yes";
-			}
-			else echo "no";
-		echo "<br>";
-		}
-		
-		//if(isset($_POST[$uni->id]))echo $_POST[$uni->id];
-		echo $_POST['uni'];
-		//ControladorUniversidadTemporal::vincular_universidades();
-		}
 
 }
-
-;break;
-
-case 'verificar': if(!empty($_GET["controller"])){
 	
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::verificar_alumnos();	
-		}		
-		if($_GET["controller"]=='universidades'){
-		ControladorUniversidadTemporal::verificar_universidades();	
+  </style>  
 		
-		}		
-		if($_GET["controller"]=='universidades_extra'){		
-			if(isset($_POST["vincular"])){ 
-				ControladorUniversidadTemporal::vincular();
-			}			
-			else if(isset($_POST["agregar"])){
-				ControladorUniversidadTemporal::guardar();
-			}
-		
-		}		
-		if($_GET["controller"]=='profesores_extra'){		
-			if(isset($_POST["vincular"])){ 
-				ControladorProfesorTemporal::vincular();
-			}			
-			else if(isset($_POST["agregar"])){
-				ControladorProfesorTemporal::guardar();
-			}		
-		}
-		
-		if($_GET["controller"]=='profesores'){
-		ControladorProfesorTemporal::verificar_profesores();	
-		}
-	}
-
-;break;
-
-case 'filtrar': if(!empty($_GET["controller"])){
 	
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::filtrar_alumno();
-		}
-		if($_GET["controller"]=='importaralumnos'){
-		ControladorAlumnoTemporal::filtrar_alumno();
-		}
-		if($_GET["controller"]=='universidades'){
-		ControladorUniversidad::filtrar_universidad();	
-		}		
+<?php 
+
+	require("modelo/ConnectionClass.php");
+	require("modelo/Broca.php");
+	require("modelo/Producto.php");
+	require("modelo/Admin.php");
+	require("modelo/Lista.php");	
+	require("controlador/ControladorBrocas.php");	
+	require("controlador/ControladorAdmin.php");
+	require("controlador/ControladorLista.php");
+	include("assets/horizontal.html");	
 		
-		if($_GET["controller"]=='universidadestemporales'){
-		$opc = $_GET["a"];
-		
-		ControladorUniversidadTemporal::filtrar($opc);	
-		}			
-		
-		if($_GET["controller"]=='profesores'){
-		ControladorProfesor::filtrar_profesor();	
-		}			
-		if($_GET["controller"]=='profesorestemporales'){
-		ControladorProfesorTemporal::filtrar();	
-		}	
-	}
-
-;break;
-
-case 'agregar': if(!empty($_GET["controller"])){	
-		if($_GET["controller"]=='alumnos'){
-			$universidades = Universidad::cargar();
-			$profesores = Profesor::cargar();
-			$estados = Universidad::estados_cargar();
-			require("views/alumnos/agregar_alumno.php");		
-		}
-		if($_GET["controller"]=='universidades'){
-			$profesores = Profesor::cargar();
-			$estados = Universidad::estados_cargar();
-			require("views/universidades/agregar_universidad.php");
-		}
-		if($_GET["controller"]=='universidades2'){
-			$profesores = Profesor::cargar();
-			$estados = Universidad::estados_cargar();
-			require("views/universidades/agregar_universidad2.php");
-		}
-		if($_GET["controller"]=='universidades3'){
-			$id=$_GET["id"];
-			$profesores = Profesor::cargar();
-			$estados = Universidad::estados_cargar();
-			require("views/universidades/agregar_universidad3.php");
-		}
-		if($_GET["controller"]=='universidades_alumnos'){
-			$var = $_GET["id"];
-			require("views/universidades/agregar_universidad_alumnos.php");
-		}	
-		if($_GET["controller"]=='universidades_agregar'){
-			require("views/universidades/agregar_universidad_a.php");
-		}			
-		if($_GET["controller"]=='profesores'){
-			require("views/profesores/agregar_profesor.php");
-		}
-		if($_GET["controller"]=='profesores2'){
-			require("views/profesores/agregar_profesor2.php");
-		}
-		if($_GET["controller"]=='profesores3'){
-			$id=$_GET["id"];
-			require("views/profesores/agregar_profesor3.php");
-		}
-		if($_GET["controller"]=='profesores_alumnos'){
-			require("views/profesores/agregar_profesor_alumnos.php");
-		}
-		if($_GET["controller"]=='profesores_agregar'){
-			require("views/profesores/agregar_profesor_a.php");
-		}			
-		if($_GET["controller"]=='universidadestemporal'){
-			require("views/alumnostemporales/agregar_universidad.php");
-		}		
-		if($_GET["controller"]=='profesorestemporal'){
-			require("views/alumnostemporales/agregar_profesor.php");
-		}	
-	}
-
-;break;
-
-
-case 'eliminar': if(!empty($_GET["controller"])){
-		if($_GET["controller"]=='alumnos'){
-		$var = $_GET["id"];
-		ControladorAlumno::eliminar_alumno($var);	
-		}
-		if($_GET["controller"]=='tablaTemporal'){
-		ControladorAlumno::eliminar_temporal();	
-		}		
-		if($_GET["controller"]=='universidades'){
-		$ide = $_GET["id"];
-		ControladorUniversidad::eliminar_universidad($ide);	
-		}			
-		if($_GET["controller"]=='profesores'){
-		$ide = $_GET["id"];
-		ControladorProfesor::eliminar_profesor($ide);	
-		}
-	}
-
-;break;
-
-case 'guardar': if(!empty($_GET["controller"])){
 	
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::guardar_alumno();
-		}
-		
-		if($_GET["controller"]=='universidades'){
-		ControladorUniversidad::guardar_universidad();
-		}
-		if($_GET["controller"]=='universidades2'){
-		ControladorUniversidad::guardar_universidad2();
-		}		
-		
-		if($_GET["controller"]=='universidades3'){
-		$var=$_GET["id"];
-		ControladorUniversidad::guardar_universidad3($var);
-		}	
-		
-		if($_GET["controller"]=='universidadesAlumno'){
-		ControladorUniversidad::guardar_universidad_alumno();
-		}	
-		
-		if($_GET["controller"]=='universidadesAgregar'){
-		$var = $_GET["id"];
-		ControladorUniversidad::guardar_universidad_a();
-		}
-		if($_GET["controller"]=='alumnostemporal'){
-		$var = $_GET["id"];
-		ControladorAlumno::guardar_alumnotemporal($var);	
-		}
-			
-		if($_GET["controller"]=='profesores'){
-		ControladorProfesor::guardar_profesor();	
-		}
-		if($_GET["controller"]=='profesores2'){
-		ControladorProfesor::guardar_profesor2();	
-		}
-		
-		if($_GET["controller"]=='profesores3'){
-		$var=$_GET["id"];
-		ControladorProfesor::guardar_profesor3($var);	
-		}
-		
-		if($_GET["controller"]=='profesoresAlumno'){
-		$var = $_GET["id"];
-			ControladorProfesor::guardar_profesor_alumno($var);	
-		}
-		
-		if($_GET["controller"]=='profesoresAgregar'){
-			ControladorProfesor::guardar_profesor_a();	
-		}
-		
-		if($_GET["controller"]=='universidadestemporales'){
-		//echo "test";
-		ControladorUniversidadTemporal::guardar();
-		}
-		
-		if($_GET["controller"]=='profesorestemporales'){
-		ControladorProfesorTemporal::guardar();
-		}
-		
-		if($_GET["controller"]=='universidadtemp'){
-		ControladorUniversidadTemporal::guardar_universidad();
-		}
-		
-		if($_GET["controller"]=='profesortemp'){
-		//echo "Guardar Profesor";
-		ControladorProfesorTemporal::guardar_profesor();
-		}	
-		
-		if($_GET["controller"]=='archivos'){
-		ControladorArchivo::guardar_file();
-		}	
-		
-	}
-
-;break;
-
-case 'guardaredicion': if(!empty($_GET["controller"])){
-	
-		if($_GET["controller"]=='universidades') {
-			$var = $_GET["id"];			
-			ControladorUniversidad::guardaredicion_universidad($var);	
-		}	
-		
-		if($_GET["controller"]=='alumnos'){
-			$id = $_GET["id"];
-			ControladorAlumno::guardaredicion_alumno($id);	
-		}
-		
-			if($_GET["controller"]=='profesores'){
-			$var = $_GET["id"];
-			//echo "editar prof";
-			ControladorProfesor::guardaredicion_profesor($var);	
-		}
-		
-		
-	}
-
-;break;
-
-case 'habilitar': if(!empty($_GET["controller"])){
-	
-		if($_GET["controller"]=='alumnos'){
-		$var = $_GET["id"];
-		//echo "Habilitar";
-		ControladorAlumno::habilitar_alumno($var);	
-		}	
-		
-		if($_GET["controller"]=='universidades'){
-		$var = $_GET["id"];
-		ControladorAlumno::habilitar_universidad($var);	
-		}	
-	}
-
-;break;
-
-case 'importarguardar': if(!empty($_GET["controller"])){
-	
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::guardarimportar_alumnos();
-		}
-	}
-
-;break;
-
-
-case 'importar': if(!empty($_GET["controller"])){
-	
-		if($_GET["controller"]=='alumnos'){
-		ControladorAlumno::importar_alumnos();
-		}
-	}
-
-;break;
-}
-
-}
-
-else{
-	  echo"<br><br>";
-	  echo "<center><img src='assets/images/SillaCerroTEC.png'></center>";
-	}
 ?>
+
+
+
+
+
+
+<div class="derecha" style="float:right">
+<?php	
+	if(!empty($_GET["dir"])){
+	$direccion=$_GET["dir"];
+		switch($direccion){
+			case 'broca': if(!empty($_GET["vista"])){
+					$pagina = substr($_GET["vista"], -1);
+					
+					if ($pagina==1)	require("vista/brocas/v001.php");
+					if ($pagina==2)	require("vista/brocas/v002.php");
+					if ($pagina==3)	require("vista/brocas/v003.php");
+					if ($pagina==4)	require("vista/brocas/v004.php");
+				}
+			;break;
+			
+			case 'machuelo': if(!empty($_GET["vista"])){
+					$pagina = substr($_GET["vista"], -1);
+					
+					if ($pagina==1)	require("vista/machuelos/v001.php");
+					if ($pagina==2)	require("vista/machuelos/v002.php");
+					if ($pagina==3)	require("vista/machuelos/v003.php");
+					if ($pagina==4)	require("vista/machuelos/v004.php");
+				}
+			;break;
+			
+				case 'endmill': if(!empty($_GET["vista"])){
+					$pagina = substr($_GET["vista"], -1);
+					
+					if ($pagina==1)	require("vista/endmills/v001.php");
+					if ($pagina==2)	require("vista/endmills/v002.php");
+					if ($pagina==3)	require("vista/endmills/v003.php");
+					if ($pagina==4)	require("vista/endmills/v004.php");
+				}
+			;break;
+			
+			case 'rima': if(!empty($_GET["vista"])){
+					$pagina = substr($_GET["vista"], -1);
+					
+					if ($pagina==1)	require("vista/rimas/v001.php");
+					if ($pagina==2)	require("vista/rimas/v002.php");
+				}
+			;break;
+			
+			case 'autenticar': if(!empty($_GET["controller"])){	
+					if($_GET["controller"]=='admin'){
+					ControladorAdmin::autenticar();	
+					}
+				}
+			;break;
+			
+			case 'guardar': if(!empty($_GET["controller"])){	
+					if($_GET["controller"]=='admin'){
+					ControladorAdmin::guardar_usuario();	
+					}
+				}
+			;break;
+			
+			case 'video': if(!empty($_GET["controller"])){	
+					if($_GET["controller"]=='mostra_video'){
+					ControladorAdmin::mostrar_video_cliente();	
+					}
+					if($_GET["controller"]=='mostra_video_productos'){
+					ControladorAdmin::mostrar_video_productos();	
+					}
+				}
+			;break;
+			
+			
+			case 'lista': if(!empty($_GET["accion"])){	
+					if($_GET["accion"]=='agregar'){
+					$clave = $_GET["clave"];
+					$ip = $_SERVER['REMOTE_ADDR'];
+					ControladorLista::agregar($ip,$clave);	
+					}
+					
+					if($_GET["accion"]=='eliminar'){
+					$clave = $_GET["clave"];
+					$ip = $_SERVER['REMOTE_ADDR'];
+					ControladorLista::eliminar($ip,$clave);	
+					}
+				}
+			;break;
+
+			case 'lista_pedido': if(!empty($_GET["accion"])){	
+					if($_GET["accion"]=='lista_eliminar'){
+					$ip = $_SERVER['REMOTE_ADDR'];
+					ControladorLista::eliminar_lista($ip);	
+					}
+					
+					if($_GET["accion"]=='mostrar'){
+					$ip = $_SERVER['REMOTE_ADDR'];
+					ControladorLista::mostrar($ip);	
+					}
+				}
+			;break;	
+			
+			case 'nosotros': require("vista/nosotros.php");
+					
+			;break;
+			
+			case 'contacto': require("vista/contacto.php");
+					
+			;break;
+			
+			case 'servicios': require("vista/servicios.php");
+					
+			;break;
+			
+			
+		}
+	}
+	
+	//else require("banner/index.html");
+
+	
+
+?>
+</div>
+
+<div class="izquierda" style="float:left">
+<?php
+include("assets/vertical.html"); 
+?>
+</div>
+<br>
+<center><img src='images/footer.png'></center>
+
+
+</html>

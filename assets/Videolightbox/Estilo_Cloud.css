@@ -1,0 +1,26 @@
+div#voverlay {
+	background-image:url(http://lh6.ggpht.com/_dsEG33PDaHw/TS4wbk0B1oI/AAAAAAAAAi4/nB07Q0No8PQ/s640/back.png);
+	width:640px;
+	height:480px;
+	display:none;
+	padding:48px;
+}
+div#voverlay div.close {
+	background-image:url(http://lh6.ggpht.com/_dsEG33PDaHw/TS4wbkeZMuI/AAAAAAAAAi8/oKY8KHqYsd4/close.png);
+	position:absolute;
+	right:16px;
+	top:12px;
+	cursor:pointer;
+	height:32px;
+	width:32px;
+}
+div#voverlay div.close:hover{
+background-position:0 100%;
+}
+div#vcontainer{
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;	
+	background: url(http://lh6.ggpht.com/_dsEG33PDaHw/TS4sf308N0I/AAAAAAAAAic/VJdHNbGaUDk/loading.gif) no-repeat 50% 50%;
+}
