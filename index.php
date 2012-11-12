@@ -26,7 +26,7 @@
 	<script type="text/javascript" src="assets/js/jquery.dcdrilldown.1.2.min.js"></script>
 
 
-	<!---div id="logo" align="center" ><img src='assets/imagenes/logo_herme.png'---IMAGEN-->
+	<div id="logo" align="center" ><img src='assets/imagenes/logo.jpg'>
 	<br>
 	<br>
 
@@ -184,7 +184,7 @@
 		}
 	}
 	
-	//else require("banner/index.html");
+	else require("banner/index.html");
 
 	
 
@@ -193,11 +193,21 @@
 
 <div class="izquierda" style="float:left">
 <?php
-include("assets/vertical.html"); 
+//include("assets/vertical.html"); 
 ?>
+<form name="login" action="Autentificar.php"  method="post">
+<br><br>
+				<font color="orange" size="3">Ingrese a su cuenta:</font><br><br>
+				<font color="orange">Usuario:</font><br><input type="text" name="usuario" size="45"/><br>
+				<font color="orange">Contrase&ntilde;a:</font><br><input type="password" name="contrasena" size="45"/><br>
+				<div class="box3">
+				<br>
+				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresa"/>Ingresa</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+			</form>
 </div>
 <br>
-<center><img src='images/footer.png'></center>
+<center><img src='images/footer.jpg'></center>
 
 
 </html>
