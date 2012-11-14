@@ -62,6 +62,7 @@
 	require("controlador/ControladorBrocas.php");	
 	require("controlador/ControladorAdmin.php");
 	require("controlador/ControladorLista.php");
+	require("controlador/ControladorCatalogo.php");
 	include("assets/horizontal.html");	
 		
 	
@@ -77,6 +78,11 @@
 	if(!empty($_GET["dir"])){
 	$direccion=$_GET["dir"];
 		switch($direccion){
+			case 'catalogo':{
+			ControladorCatalogo::mostrarcatalogo();
+			};
+			break;
+			
 			case 'broca': if(!empty($_GET["vista"])){
 					$pagina = substr($_GET["vista"], -1);
 					
