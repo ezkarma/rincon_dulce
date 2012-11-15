@@ -1,6 +1,9 @@
-insert into producto values ('1','TOPSY TURVY',5000,1,'Pastel con su raro diseño, llamado así por ser un pastel deforme, pero muy bien diseñando, para darle un toque diferente a tu fiesta.','imagen',8);
-
-insert into producto values ('2','pastel dulce2',100,1,'text','imagen',10);
-
-
-insert into producto values ('3','pastel dulce3',100,1,'text','imagen',10);
+insert into producto values ('1','TOPSY TURVY',3000,1,'Pastel hecho a base de pan y fondant, con un bonito diseño para tu fiesta de 15 años. Tu pastel será la sensación de la fiesta.','imagen',8);
+insert into producto values ('2','TOPSY TURVY',5000,1,'Pastel con su raro diseño, llamado así por ser un pastel deforme, pero muy bien diseñando, para darle un toque diferente a tu fiesta.','imagen',8);
+insert into producto values ('3','TOPSY TURVY',6000,1,'Pastel con un diseño muy creativo sorprenderá a todos tus invitados cuando lo vean, por su extravagancia y originalidad le pondrá un toque muy especial a tu celebración.','imagen',8);
+insert into producto values ('4','TOPSY TURVY',6000,2,'Diseño original a base de pan ya sea de vainilla, platano ó chocolate, y una base de fondant, además adornado con perlas sabor a chocolate.','imagen',8);
+insert into producto values ('5','TOPSY TURVY',5000,2,'Diseño original a base de pan ya sea de vainilla, platano ó chocolate, y una base de fondant, además adornado con perlas sabor a chocolate y flores hechas a base de fondant.','imagen',8);
+insert into producto values ('6','TOPSY TURVY',5500,2,'Pastel hecho a base de fondant y pan de diferentes sabores, con un diseño muy extravagante, cabe destacar que todo lo que forma parte de él es comestible.','imagen',8);
+insert into producto values ('7','TOPSY TURVY',3000,3,'Este pastel elaborado para esa ocasión especial o esa persona especial, elaborado a base de fondant y pan de chocolate.','imagen',8);
+insert into producto values ('8','Bolsa Fondant',1500,3,'Si lo que deseas es darle una sorpresa a esa persona especial, este hermoso pastel seria el indicado, con su diseño muy creativo, elaborado a base de fondat y pan de platano.','imagen',8);
+insert into producto values ('9','Diseño personal Fondant ',1000,3,'Tu también puedes darnos tu idea y te crearemos tu pastel, e aquí un claro ejemplo, también elaborado a base de fondant y pan de vainilla este pastel elaborado muy detalladamente será un buen detalle para regalar.','imagen',8);
