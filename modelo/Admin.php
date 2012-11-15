@@ -1,8 +1,8 @@
 <?php
 session_start();
 class Admin{
-	var  $usuario;
-	var  $contrasena;
+	var  $correo;
+	var  $clave;
 	var  $enlace;
 	var  $comentario;
 		
@@ -10,24 +10,27 @@ class Admin{
 		
 		$con = new Connection();
 		$con->start();
-			$query = @mysql_query('select * from usuarios where usuario="'.mysql_real_escape_string($this->usuario).'" AND contrasena="'.mysql_real_escape_string($this->contrasena).'"');
+			$query = @mysql_query('select * from clientes where correo="'.mysql_real_escape_string($this->correo).'" AND clave="'.mysql_real_escape_string($this->clave).'"');
 			
 			if($existe = @mysql_fetch_object($query)){
 				$_SESSION['logiado'] = 'si';
-				$_SESSION['usuario'] = $this->usuario;
-				header('Location: ../admin/menuadmin.php');
+				$_SESSION['usuario'] = $this->correo;
+				echo "entro";
+				header('Location: ?dir=cuenta');
 			}else{
 				$_SESSION['logiado'] = 'no';
-				echo "entro en no ". $_SESSION['usuario'] = $this->usuario;
+				echo "<div style='width:1000'><font color='red' size='4'><center>El usuario o password que ah ingresado son incorrectos, por favor intente de nuevo<center></font><br></div>";
 				//header('Location:http://localhost:8080/MyPHP/logeado.php');
 			}
+			
 		}	
 		
 
-	public function guardar(){
+	public function guardar_usuario(){
 		$con = new Connection();
 		$con->start();
-		$qry = "insert into usuarios(usuario,contrasena) values('".$this->usuario."','".$this->contrasena."');";
+	
+		$qry = "insert into clientes values('Juan','Apellidos',747171,'calle','".$this->correo."','".$this->clave."');";
 		
 		mysql_query($qry); 
 		return true;

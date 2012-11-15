@@ -121,13 +121,9 @@
 				}
 			;break;
 			
-			case 'autenticar': if(!empty($_GET["controller"])){	
-					if($_GET["controller"]=='admin'){
-					ControladorAdmin::autenticar();	
-					}
-				}
-			;break;
-			
+			case 'autentificar': ControladorAdmin::autenticar();break;
+			case 'registro': ControladorAdmin::registro();break;
+			case 'registrar_usuario': ControladorAdmin::registrar_usuario();break;
 			case 'guardar': if(!empty($_GET["controller"])){	
 					if($_GET["controller"]=='admin'){
 					ControladorAdmin::guardar_usuario();	
@@ -190,7 +186,15 @@
 		}
 	}
 	
-	else require("banner/index.html");
+	else {
+		echo "<br><font size='3'> Bienvenido al Rincon Dulce Hoy es: ";
+date_default_timezone_set('America/Mexico_City');
+
+
+echo date("j F, Y, g:i a");
+echo "<br></font>";
+		require("banner/index.html");
+	}
 
 	
 
@@ -201,16 +205,18 @@
 <?php
 //include("assets/vertical.html"); 
 ?>
-<form name="login" action="Autentificar.php"  method="post">
+<form name="login" action="/?dir=autentificar"   method="post">
 <br><br>
 				<font color="orange" size="3">Ingrese a su cuenta:</font><br><br>
 				<font color="orange">Usuario:</font><br><input type="text" name="usuario" size="45"/><br>
 				<font color="orange">Contrase&ntilde;a:</font><br><input type="password" name="contrasena" size="45"/><br>
 				<div class="box3">
 				<br>
-				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresa"/>Ingresa</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresar"/>Ingresar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-danger" type="button"  onClick="parent.location='?dir=registro'" value="Registrarse"/>Registrarse</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				
 				</div>
-			</form>
+</form>
 </div>
 <br>
 
