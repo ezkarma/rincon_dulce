@@ -19,9 +19,9 @@ class Connection{
     public function __construct(){
         $this->debug = 1;
         $this->host = "localhost";
-        $this->user = "herme";
-        $this->pass = "afilados1243";
-        $this->db = "torno";
+        $this->user = "rincon";
+        $this->pass = "dulce";
+        $this->db = "pasteleria";
     }
 
     /** 

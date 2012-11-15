@@ -1,0 +1,6 @@
+insert into producto values ('1','TOPSY TURVY',5000,1,'Pastel con su raro diseño, llamado así por ser un pastel deforme, pero muy bien diseñando, para darle un toque diferente a tu fiesta.','imagen',8);
+
+insert into producto values ('2','pastel dulce2',100,1,'text','imagen',10);
+
+
+insert into producto values ('3','pastel dulce3',100,1,'text','imagen',10);

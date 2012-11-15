@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <title>El Rincon Dulce</title>
   <link rel="shortcut icon" type="image/ico" href="assets/imagenes/fondo1.png"/>
+	
 	<!---TEMA -->
 	<link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="cart/css/styles.css" />
@@ -55,7 +56,6 @@
 <?php 
 
 	require("modelo/ConnectionClass.php");
-	require("modelo/Broca.php");
 	require("modelo/Producto.php");
 	require("modelo/Admin.php");
 	require("modelo/Lista.php");	
@@ -213,6 +213,14 @@
 			</form>
 </div>
 <br>
+
+<center>
+<table>
+
+
+	</table>
+</center>
+
 <center><img src='images/footer.jpg'></center>
 
 
