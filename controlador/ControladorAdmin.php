@@ -4,20 +4,25 @@ class ControladorAdmin{
 	public static function autenticar(){
 		$administrador = new Admin();
 		
-		$administrador->usuario = strip_tags($_POST['usuario']);
-		$administrador->contrasena= strip_tags(sha1($_POST['contrasena']));
-		
+		$administrador->correo = strip_tags($_POST['usuario']);
+		$administrador->clave= strip_tags(sha1($_POST['contrasena']));
+	
 		$administrador->autentico();
 		
 	}
 	
-	public static function guardar_usuario(){
+	public static function registro(){
+		require("vista/registro.php");	
+	}
+	
+	public static function registrar_usuario(){
 		$administrador = new Admin();
 		
-		$administrador->usuario = strip_tags($_POST['usuario']);
-		$administrador->contrasena= strip_tags(sha1($_POST['contrasena']));
+		$administrador->correo = strip_tags($_POST['usuario']);
+		$administrador->clave= strip_tags(sha1($_POST['contrasena']));
 		
-		$administrador->guardar();	
+		
+		$administrador->guardar_usuario();	
 	}
 	
 	public static function mostrar_brocas(){
