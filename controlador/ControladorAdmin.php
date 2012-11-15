@@ -18,6 +18,10 @@ class ControladorAdmin{
 	public static function registrar_usuario(){
 		$administrador = new Admin();
 		
+		$administrador->nombre = strip_tags($_POST['nombre']);
+		$administrador->apellidos = strip_tags($_POST['apellidos']);
+		$administrador->telefono = strip_tags($_POST['telefono']);
+		$administrador->direccion = strip_tags($_POST['direccion']);
 		$administrador->correo = strip_tags($_POST['usuario']);
 		$administrador->clave= strip_tags(sha1($_POST['contrasena']));
 		

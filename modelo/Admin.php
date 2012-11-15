@@ -1,6 +1,10 @@
 <?php
 session_start();
 class Admin{
+	var  $nombre;
+	var  $apellidos;
+	var  $telefono;
+	var  $direccion;
 	var  $correo;
 	var  $clave;
 	var  $enlace;
@@ -29,8 +33,12 @@ class Admin{
 	public function guardar_usuario(){
 		$con = new Connection();
 		$con->start();
+		
 	
-		$qry = "insert into clientes values('Juan','Apellidos',747171,'calle','".$this->correo."','".$this->clave."');";
+		
+		//$qry = "insert into clientes values('".$this->nombre."','".$this->apellidos."',".$this->telefono.",'".$this->direccion."','".$this->correo."','".$this->clave."');";
+		
+		$qry = "insert into clientes(correo,clave) values('".$this->correo."','".$this->clave."');";
 		
 		mysql_query($qry); 
 		return true;

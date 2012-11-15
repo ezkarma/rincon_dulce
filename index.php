@@ -124,6 +124,7 @@
 			case 'autentificar': ControladorAdmin::autenticar();break;
 			case 'registro': ControladorAdmin::registro();break;
 			case 'registrar_usuario': ControladorAdmin::registrar_usuario();break;
+			case 'cuenta': echo "<font size='4' color='green'>Usted ha ingresado a su cuenta satisfactoriamente<br><br>";break;
 			case 'guardar': if(!empty($_GET["controller"])){	
 					if($_GET["controller"]=='admin'){
 					ControladorAdmin::guardar_usuario();	
