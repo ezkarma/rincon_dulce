@@ -53,7 +53,7 @@
 		
 	
 <?php 
-
+	session_start();
 	require("modelo/ConnectionClass.php");
 	require("modelo/Broca.php");
 	require("modelo/Producto.php");
@@ -63,8 +63,7 @@
 	require("controlador/ControladorAdmin.php");
 	require("controlador/ControladorLista.php");
 	require("controlador/ControladorCatalogo.php");
-	include("assets/horizontal.html");	
-		
+	include("assets/horizontal.html");
 	
 ?>
 
@@ -130,6 +129,13 @@
 					ControladorAdmin::guardar_usuario();	
 					}
 				}
+			;break;
+			case 'salir': {
+			
+			$_SESSION['logiado'] = 'no';
+			header('Location:/');
+			
+			}
 			;break;
 			
 			case 'video': if(!empty($_GET["controller"])){	
@@ -204,7 +210,7 @@ echo "<br></font>";
 
 <div class="izquierda" style="float:left">
 <?php
-//include("assets/vertical.html"); 
+if($_SESSION['logiado'] != 'si'){
 ?>
 <form name="login" action="/?dir=autentificar"   method="post">
 <br><br>
@@ -215,9 +221,25 @@ echo "<br></font>";
 				<br>
 				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresar"/>Ingresar</button>&nbsp;&nbsp;&nbsp;&nbsp;
 				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-danger" type="button"  onClick="parent.location='?dir=registro'" value="Registrarse"/>Registrarse</button>&nbsp;&nbsp;&nbsp;&nbsp;
-				
 				</div>
 </form>
+
+<?php
+}
+else {
+echo "<font color='green' size='3'>";
+echo "Bienvenido ".$_SESSION['usuario'];
+echo "</font>";
+
+?>
+<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-info" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Editar Cuenta</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Pedidos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Cursos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-danger" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Salir</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<?php
+}
+?>
 </div>
 <br>
 <center><img src='images/footer.jpg'></center>

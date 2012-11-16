@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 class Admin{
 	var  $nombre;
 	var  $apellidos;
@@ -19,7 +19,6 @@ class Admin{
 			if($existe = @mysql_fetch_object($query)){
 				$_SESSION['logiado'] = 'si';
 				$_SESSION['usuario'] = $this->correo;
-				echo "entro";
 				header('Location: ?dir=cuenta');
 			}else{
 				$_SESSION['logiado'] = 'no';
@@ -37,8 +36,9 @@ class Admin{
 	
 		
 		//$qry = "insert into clientes values('".$this->nombre."','".$this->apellidos."',".$this->telefono.",'".$this->direccion."','".$this->correo."','".$this->clave."');";
+		$qry = "insert into clientes(nombre,telefono,correo,clave) values('".$this->nombre."','".$this->telefono."','".$this->correo."','".$this->clave."');";
 		
-		$qry = "insert into clientes(correo,clave) values('".$this->correo."','".$this->clave."');";
+		//$qry = "insert into clientes(correo,clave) values('".$this->correo."','".$this->clave."');";
 		
 		mysql_query($qry); 
 		return true;
