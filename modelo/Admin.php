@@ -9,6 +9,7 @@ class Admin{
 	var  $clave;
 	var  $enlace;
 	var  $comentario;
+
 		
 	public function autentico(){
 		
@@ -16,9 +17,18 @@ class Admin{
 		$con->start();
 			$query = @mysql_query('select * from clientes where correo="'.mysql_real_escape_string($this->correo).'" AND clave="'.mysql_real_escape_string($this->clave).'"');
 			
-			if($existe = @mysql_fetch_object($query)){
+			if($existe = @mysql_fetch_assoc($query)){
 				$_SESSION['logiado'] = 'si';
 				$_SESSION['usuario'] = $this->correo;
+				$res = mysql_query('select * from clientes where correo="'.mysql_real_escape_string($this->correo).'";');
+			
+					while($row = mysql_fetch_assoc($res)){
+						
+						
+						$_SESSION['nombre'] = $row["nombre"];
+					
+						
+					}	
 				header('Location: ?dir=cuenta');
 			}else{
 				$_SESSION['logiado'] = 'no';

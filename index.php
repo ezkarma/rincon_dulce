@@ -2,11 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <title>El Rincon Dulce</title>
   <link rel="shortcut icon" type="image/ico" href="assets/imagenes/fondo1.png"/>
+  <script src="/assets/jquery.js"></script>
 	
 	<!---TEMA -->
 	<link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="cart/css/styles.css" />
 	<link rel="stylesheet" href="banner/styles.css" />
+	
+	<!--ACEPTAR SOLO NUMEROS O LETRAS -->
+	<script src="/assets/validacion/validacion_nl.js" type="text/javascript"></script>
+	
+	
 	
 	<!-- Barra de Menu -->
 	<link href="assets/css/softblue.css" rel="stylesheet" type="text/css">	
@@ -55,11 +61,12 @@
 	
 <?php 
 	session_start();
+	
 	require("modelo/ConnectionClass.php");
 	require("modelo/Producto.php");
 	require("modelo/Admin.php");
 	require("modelo/Lista.php");	
-	require("controlador/ControladorBrocas.php");	
+	require("controlador/ControladorPedido.php");	
 	require("controlador/ControladorAdmin.php");
 	require("controlador/ControladorLista.php");
 	require("controlador/ControladorCatalogo.php");
@@ -78,7 +85,10 @@
 	$direccion=$_GET["dir"];
 		switch($direccion){
 			case 'catalogo':{
-			ControladorCatalogo::mostrarcatalogo();
+			if(empty($_GET["categoria"]))ControladorCatalogo::mostrarcatalogo();
+			if(!empty($_GET["categoria"])){
+			ControladorCatalogo::mostrarbodas();
+			}
 			};
 			break;
 			
@@ -91,35 +101,7 @@
 					if ($pagina==4)	require("vista/brocas/v004.php");
 				}
 			;break;
-			
-			case 'machuelo': if(!empty($_GET["vista"])){
-					$pagina = substr($_GET["vista"], -1);
-					
-					if ($pagina==1)	require("vista/machuelos/v001.php");
-					if ($pagina==2)	require("vista/machuelos/v002.php");
-					if ($pagina==3)	require("vista/machuelos/v003.php");
-					if ($pagina==4)	require("vista/machuelos/v004.php");
-				}
-			;break;
-			
-				case 'endmill': if(!empty($_GET["vista"])){
-					$pagina = substr($_GET["vista"], -1);
-					
-					if ($pagina==1)	require("vista/endmills/v001.php");
-					if ($pagina==2)	require("vista/endmills/v002.php");
-					if ($pagina==3)	require("vista/endmills/v003.php");
-					if ($pagina==4)	require("vista/endmills/v004.php");
-				}
-			;break;
-			
-			case 'rima': if(!empty($_GET["vista"])){
-					$pagina = substr($_GET["vista"], -1);
-					
-					if ($pagina==1)	require("vista/rimas/v001.php");
-					if ($pagina==2)	require("vista/rimas/v002.php");
-				}
-			;break;
-			
+						
 			case 'autentificar': ControladorAdmin::autenticar();break;
 			case 'registro': ControladorAdmin::registro();break;
 			case 'registrar_usuario': ControladorAdmin::registrar_usuario();break;
@@ -137,6 +119,18 @@
 			
 			}
 			;break;
+			
+			case 'comprar': 
+				if(!empty($_GET["cliente"]) && !empty($_GET["producto"])){	
+					
+					ControladorPedido::agregar_carrito($_GET["cliente"],$_GET["producto"]);
+						
+						
+					}
+									
+					
+				
+			;break;	
 			
 			case 'video': if(!empty($_GET["controller"])){	
 					if($_GET["controller"]=='mostra_video'){
@@ -210,7 +204,7 @@ echo "<br></font>";
 
 <div class="izquierda" style="float:left">
 <?php
-if($_SESSION['logiado'] != 'si'){
+if(!isset($_SESSION['logiado']) || $_SESSION['logiado']!='si'){
 ?>
 <form name="login" action="/?dir=autentificar"   method="post">
 <br><br>
@@ -228,7 +222,7 @@ if($_SESSION['logiado'] != 'si'){
 }
 else {
 echo "<font color='green' size='3'>";
-echo "Bienvenido ".$_SESSION['usuario'];
+echo "Bienvenido ".$_SESSION['nombre'];
 echo "</font>";
 
 ?>

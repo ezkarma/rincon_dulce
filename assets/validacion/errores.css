@@ -1,0 +1,20 @@
+em.error {
+  background:url("/assets/validacion/demo/images/exe.png") no-repeat 0px 0px;
+  padding-left: 20px;
+padding-bottom: 20px;
+color:#FF0000;
+}
+
+em.error, textarea.error, input.error{
+    color:#FF0000;
+	border:2px solid red;
+}
+
+em.success {
+  background:url("/assets/validacion/demo/images/checked.png") no-repeat 0px 0px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+em.error { color: red; }
+#warning { display: none; }
