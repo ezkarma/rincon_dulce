@@ -37,7 +37,29 @@ class Admin{
 			}
 			
 		}	
+	
+	public static function editar_cuenta(){
+		$con = new Connection();
+	$con->start();
+	
+	$res = mysql_query("select * from clientes where correo='".$_SESSION['usuario']."';");
+	$clientes = new Admin();
+	while($row = mysql_fetch_assoc($res)){
+		$tmp = new Admin();
 		
+		$tmp->nombre = $row["nombre"];
+		$tmp->apellidos = $row["apellidos"];
+		$tmp->telefono = $row["telefono"];
+		$tmp->direccion = $row["direccion"];
+		$tmp->correo= $row["correo"];
+		$tmp->clave = $row["clave"];
+				
+		
+		$cliente = $tmp;
+		
+	}
+	return $cliente;
+	}
 
 	public function guardar_usuario(){
 		$con = new Connection();
@@ -46,7 +68,7 @@ class Admin{
 	
 		
 		//$qry = "insert into clientes values('".$this->nombre."','".$this->apellidos."',".$this->telefono.",'".$this->direccion."','".$this->correo."','".$this->clave."');";
-		$qry = "insert into clientes(nombre,telefono,correo,clave) values('".$this->nombre."','".$this->telefono."','".$this->correo."','".$this->clave."');";
+		$qry = "insert into clientes(nombre,apellidos,telefono,correo,clave) values('".$this->nombre."','".$this->apellidos."','".$this->telefono."','".$this->correo."','".$this->clave."');";
 		
 		//$qry = "insert into clientes(correo,clave) values('".$this->correo."','".$this->clave."');";
 		

@@ -65,10 +65,11 @@
 	require("modelo/ConnectionClass.php");
 	require("modelo/Producto.php");
 	require("modelo/Admin.php");
-	require("modelo/Lista.php");	
+	require("modelo/Carrito.php");
+		
 	require("controlador/ControladorPedido.php");	
 	require("controlador/ControladorAdmin.php");
-	require("controlador/ControladorLista.php");
+
 	require("controlador/ControladorCatalogo.php");
 	include("assets/horizontal.html");
 	
@@ -104,6 +105,8 @@
 						
 			case 'autentificar': ControladorAdmin::autenticar();break;
 			case 'registro': ControladorAdmin::registro();break;
+			case 'carrito': ControladorPedido::carrito();break;
+			case 'ordenar': ControladorPedido::ordenar();break;
 			case 'registrar_usuario': ControladorAdmin::registrar_usuario();break;
 			case 'cuenta': echo "<font size='4' color='green'>Usted ha ingresado a su cuenta satisfactoriamente<br><br>";break;
 			case 'guardar': if(!empty($_GET["controller"])){	
@@ -120,12 +123,9 @@
 			}
 			;break;
 			
-			case 'comprar': 
+			case 'agregar_carrito': 
 				if(!empty($_GET["cliente"]) && !empty($_GET["producto"])){	
-					
 					ControladorPedido::agregar_carrito($_GET["cliente"],$_GET["producto"]);
-						
-						
 					}
 									
 					
@@ -170,6 +170,8 @@
 					}
 				}
 			;break;	
+			
+			case 'editar_cuenta': ControladorAdmin::editar_cuenta();break;
 			
 			case 'nosotros': require("vista/nosotros.php");
 					
@@ -227,7 +229,8 @@ echo "</font>";
 
 ?>
 <br><br>
-<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-info" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Editar Cuenta</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=carrito'" value="Registrarse"/>Mi Carrito</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-info" type="button"  onClick="parent.location='?dir=editar_cuenta'" value="Registrarse"/>Editar Cuenta</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Pedidos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Cursos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-danger" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Salir</button>&nbsp;&nbsp;&nbsp;&nbsp;

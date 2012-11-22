@@ -24,9 +24,11 @@ echo "<i>".$pastel->descripcion."</i>";
 echo "<br><br>";
 echo "Numero de Porciones: ".$pastel->porciones;
 echo "<br><br>";
-if ($_SESSION['logiado']=='si'){
-?><button text style='font-weight:bold;' type='button'  class='btn btn-warning'  onClick='window.location="?dir=comprar&cliente=<?php echo $_SESSION['usuario'];?>&producto=<?php echo $pastel->id_producto;?>";'>Agregar al Carrito</button>
+if (isset($_SESSION['logiado'])){
+if($_SESSION['logiado']=='si'){
+?><button text style='font-weight:bold;' type='button'  class='btn btn-warning'  onClick='window.location="?dir=agregar_carrito&cliente=<?php echo $_SESSION['usuario'];?>&producto=<?php echo $pastel->id_producto;?>";'>Agregar al Carrito</button>
 <?php
+}
 }
 else {
 echo "<button text style='font-weight:bold;' disabled='disabled' type='button'  class='btn btn-warning'  onClick='window.location='?dir=verificar&controller=alumnos';'>Agregar al Carrito</button>";

@@ -11,6 +11,16 @@ class ControladorAdmin{
 		
 	}
 	
+	public static function editar_cuenta(){
+	$cliente=Admin::editar_cuenta();
+	
+	
+		
+	require ("vista/editar_cuenta.php");
+	}
+		
+	
+	
 	public static function registro(){
 		require("vista/registro.php");	
 	}

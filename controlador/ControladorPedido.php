@@ -7,12 +7,22 @@ class ControladorPedido{
 	$con->start();
 		echo $cliente;
 		echo $producto;
-		mysql_query("insert into pedidos(id_cliente,id_producto) values ('".$cliente."', '".$producto."');");
+		mysql_query("insert into carrito values ('".$producto."','".$cliente."', 1,1);");
 			
 	}
 	
 	public static function mostrarbodas(){
 		require("vista/bodas.php"); 		
+	}
+	
+	public static function carrito(){
+		$carritos = Carrito::cargar();
+		require("vista/carrito.php"); 		
+	}
+	
+	public static function ordenar(){
+		$carritos = Carrito::cargar();
+		require("vista/orden.php"); 		
 	}
 			
 	}
