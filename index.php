@@ -88,7 +88,9 @@
 			case 'catalogo':{
 			if(empty($_GET["categoria"]))ControladorCatalogo::mostrarcatalogo();
 			if(!empty($_GET["categoria"])){
-			ControladorCatalogo::mostrarbodas();
+			if($_GET["categoria"]=="bodas")ControladorCatalogo::mostrarbodas();
+			else if($_GET["categoria"]=="XV")ControladorCatalogo::mostrarXV();
+			else if($_GET["categoria"]=="eventos_sociales")ControladorCatalogo::mostrareventos_sociales();
 			}
 			};
 			break;

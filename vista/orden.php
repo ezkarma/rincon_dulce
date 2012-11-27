@@ -4,6 +4,11 @@
 Detalle del Pedido
 <br><br>
 </b></font>
+<font size='2' color='black'><b>
+Nombre del Cliente:<?php echo $_SESSION['nombre'];?>
+<br><br>
+</b></font>
+
 <table border='0' class='table table-striped'>
 
 <tr>
@@ -39,7 +44,9 @@ $total=$total+$subtotal;
 
 <td>Total:</td>
 <td><?php echo $total;?></td>
-
-<td><button type="button" class="btn btn-success" onclick="window.location='?dir=lista&accion=agregar&clave=a'">Ordenar Pedido</button></td>
 </table>
+
+<font color="orange">Direccion:</font><br><input type="text" name="usuario" value="<?php echo $_SESSION['direccion'];?>" size="45"/><br>
+<td><button type="button" class="btn btn-success" onclick="window.location='?dir=lista&accion=agregar&clave=a'">Comprar</button></td>
+
 </html>

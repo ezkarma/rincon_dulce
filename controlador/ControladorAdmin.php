@@ -12,10 +12,7 @@ class ControladorAdmin{
 	}
 	
 	public static function editar_cuenta(){
-	$cliente=Admin::editar_cuenta();
-	
-	
-		
+	$cliente=Admin::editar_cuenta();		
 	require ("vista/editar_cuenta.php");
 	}
 		
@@ -39,8 +36,8 @@ class ControladorAdmin{
 		$administrador->guardar_usuario();	
 	}
 	
-	public static function mostrar_brocas(){
-		require("mostrar_brocas.php");	
+	public static function mostrar_productos(){
+		require("mostrar_productos.php");	
 	}
 	
 	public static function mostrar_machuelos(){
@@ -69,30 +66,12 @@ class ControladorAdmin{
 	}
 	
 //EDITAR PRODUCTOS	
-	public static function editar_broca($var){
+	public static function editar($var){
 		$producto = new Producto();
 		$producto->cargar_uno($var);
-		require("editar_broca.php");	
+		require("editar_producto.php");	
 	}
-	
-	public static function editar_machuelo($var){
-		$producto = new Producto();
-		$producto->cargar_uno($var);
-		require("editar_machuelo.php");	
-	}
-	
-	public static function editar_endmill($var){
-		$producto = new Producto();
-		$producto->cargar_uno($var);
-		require("editar_endmill.php");	
-	}
-	
-	
-	public static function editar_rima($var){
-		$producto = new Producto();
-		$producto->cargar_uno($var);
-		require("editar_rima.php");	
-	}
+
 		
 
 //GUARDAR EDICIONES	
@@ -167,9 +146,9 @@ class ControladorAdmin{
 	
 /////ELIMINAR	
 
-	public static function eliminar_broca($var){
+	public static function eliminar_producto($var){
 		Producto::eliminar_producto($var);
-		header('Location: ?dir=productos&accion=mostrar_brocas');		
+		header('Location: ?dir=productos&accion=mostrar');		
 	}
 	
 	public static function eliminar_machuelo($var){

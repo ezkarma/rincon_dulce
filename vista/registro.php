@@ -56,7 +56,7 @@
 				</table>
 				<br>
 				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresar"/>Registrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
-				<button text style="font-weight:bold;" type="submit" class="btn btn-success" value="Guardar Cambios"/>Guardar</button>&nbsp;
+				
 				
 </form>
 </div>

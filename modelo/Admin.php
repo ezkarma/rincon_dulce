@@ -26,10 +26,12 @@ class Admin{
 						
 						
 						$_SESSION['nombre'] = $row["nombre"];
-					
+						$_SESSION['direccion'] = $row["direccion"];
+						if($row["prioridad"]==1) $_SESSION['admin'] = true;
 						
 					}	
-				header('Location: ?dir=cuenta');
+				if($_SESSION['admin']== true)header('Location: /admin/menuadmin.php');
+				else header('Location: ?dir=cuenta');
 			}else{
 				$_SESSION['logiado'] = 'no';
 				echo "<div style='width:1000'><font color='red' size='4'><center>El usuario o password que ah ingresado son incorrectos, por favor intente de nuevo<center></font><br></div>";
@@ -65,12 +67,7 @@ class Admin{
 		$con = new Connection();
 		$con->start();
 		
-	
-		
-		//$qry = "insert into clientes values('".$this->nombre."','".$this->apellidos."',".$this->telefono.",'".$this->direccion."','".$this->correo."','".$this->clave."');";
-		$qry = "insert into clientes(nombre,apellidos,telefono,correo,clave) values('".$this->nombre."','".$this->apellidos."','".$this->telefono."','".$this->correo."','".$this->clave."');";
-		
-		//$qry = "insert into clientes(correo,clave) values('".$this->correo."','".$this->clave."');";
+		$qry = "insert into clientes values('".$this->nombre."','".$this->apellidos."','".$this->telefono."','".$this->direccion."','".$this->correo."','".$this->clave."',0);";
 		
 		mysql_query($qry); 
 		return true;

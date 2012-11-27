@@ -18,7 +18,7 @@
 
 	
 	<br>
-	<center><img src='../assets/imagenes/logo_herme.png'/></center>
+	<center><img src='../assets/imagenes/logo.jpg'/></center>
 	<br><br>
 	<style type="text/css">	 
 	.izquierda {  
@@ -37,12 +37,13 @@
 	require("../controlador/controladorAdmin.php");	
 	require("../modelo/Admin.php");		
 	include("../assets/h_admin.html");	
+	session_start();
 	
 	
 ?>
 
 <?php	
-	if(isset($_SESSION['usuario'])){
+	if(isset($_SESSION['admin'])){
 
 	if(!empty($_GET["dir"])){
 	$direccion=$_GET["dir"];
@@ -72,22 +73,25 @@
 			
 			case 'usuario': if(!empty($_GET["accion"])){
 					if($_GET["accion"]=='salir'){
-					$_SESSION = array(); 
+					/*$_SESSION = array(); 
 						if (ini_get("session.use_cookies")) {
 							$params = session_get_cookie_params();
 							setcookie(session_name(), '', time() - 42000,
 							$params["path"], $params["domain"],
 							$params["secure"], $params["httponly"]);
-						}		
+						}
+					*/
 					session_destroy();
-		
+					
+					//$_SESSION['admin']=false;
+					
 					header('Location: /');	
 					}
 				}
 			;break;
 			
 			case 'productos': if(!empty($_GET["accion"])){			
-					if($_GET["accion"]=='agregar_broca'){
+					if($_GET["accion"]=='agregar'){
 						ControladorAdmin::agregar_broca();
 					}
 						if($_GET["accion"]=='agregar_machuelo'){
@@ -99,8 +103,8 @@
 						if($_GET["accion"]=='agregar_rima'){
 						ControladorAdmin::agregar_rima();
 					}
-					if($_GET["accion"]=='mostrar_brocas'){
-						ControladorAdmin::mostrar_brocas();
+					if($_GET["accion"]=='mostrar'){
+						ControladorAdmin::mostrar_productos();
 					}
 					if($_GET["accion"]=='mostrar_machuelos'){
 						ControladorAdmin::mostrar_machuelos();
@@ -128,46 +132,20 @@
 					
 					//ELIMINAR
 					
-					if($_GET["accion"]=='eliminar_broca'){
+					if($_GET["accion"]=='eliminar_producto'){
 						$clave=$_GET["clave"];
-						ControladorAdmin::eliminar_broca( $clave);
+						ControladorAdmin::eliminar_producto( $clave);
 					}
 					
-					if($_GET["accion"]=='eliminar_machuelo'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::eliminar_machuelo( $clave);
-					}
 					
-					if($_GET["accion"]=='eliminar_endmill'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::eliminar_endmill( $clave);
-					}
-					
-					if($_GET["accion"]=='eliminar_rima'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::eliminar_rima( $clave);
-					}
 					//EDITAR
 					
-					if($_GET["accion"]=='editar_broca'){
+					if($_GET["accion"]=='editar'){
 						$clave=$_GET["clave"];
-						ControladorAdmin::editar_broca( $clave);						
+						ControladorAdmin::editar( $clave);						
 					}
 					
-					if($_GET["accion"]=='editar_machuelo'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::editar_machuelo( $clave);						
-					}
-					
-					if($_GET["accion"]=='editar_endmill'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::editar_endmill( $clave);						
-					}
-					
-					if($_GET["accion"]=='editar_rima'){
-						$clave=$_GET["clave"];
-						ControladorAdmin::editar_rima( $clave);						
-					}
+				
 					
 					//GUARDAR EDICION
 					

@@ -8,10 +8,11 @@ $pasteles=Producto::cargar(1);
 
 foreach($pasteles as $pastel){
 
-echo "<table>";
+
+echo "<table width='1000'>";
 echo "<tr>";
 echo "<td>";
-echo "<img src='".$pastel->imagen."' width='600'>";
+echo "<img src='imagenes_pasteles/".$pastel->imagen."' width='600'>";
 echo "</td>";
 echo "<td width='20'>";
 echo "</td>";
@@ -20,7 +21,7 @@ echo "<font color='black' size='5'><b>".$pastel->nombre."</b></font>";
 echo "<br><br>";
 echo "Precio: $".$pastel->precio;
 echo "<br><br>";
-echo "<i>".$pastel->descripcion."</i>";
+echo "<i>".utf8_decode($pastel->descripcion)."</i>";
 echo "<br><br>";
 echo "Numero de Porciones: ".$pastel->porciones;
 echo "<br><br>";
