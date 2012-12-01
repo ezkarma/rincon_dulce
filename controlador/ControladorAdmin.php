@@ -52,43 +52,39 @@ class ControladorAdmin{
 		require("mostrar_rimas.php");
 	}
 	
-	public static function agregar_broca(){
-		require("productos/agregar_broca.php");	
-	}
-	public static function agregar_machuelo(){
-		require("productos/agregar_machuelo.php");	
-	}
-	public static function agregar_endmills(){
-		require("productos/agregar_endmills.php");	
-	}
-	public static function agregar_rima(){
-		require("productos/agregar_rima.php");	
+	public static function agregar_producto(){
+		require("productos/agregar_producto.php");	
 	}
 	
+	public static function agregar_curso(){
+		require("productos/agregar_curso.php");	
+	}
+			
 //EDITAR PRODUCTOS	
 	public static function editar($var){
 		$producto = new Producto();
 		$producto->cargar_uno($var);
 		require("editar_producto.php");	
 	}
-
 		
 
 //GUARDAR EDICIONES	
-	public static function guardar_edicion_broca($var){
+	public static function guardar_edicion($var){
 	$producto = new Producto();
 	
-	$producto->clave = $_POST['clave'];
+	
+	$producto->id_producto = $var;
 	$producto->nombre = $_POST['nombre'];
-	$producto->categoria = '1'.$_POST['a'].$_POST['b'].$_POST['c'].$_POST['d'];
-	$producto->descripcion = $_POST['descripcion'];
-	$producto->cantidad = $_POST['cantidad'];
-	$producto->cantidad_real = $_POST['cantidad_real'];
 	$producto->precio = $_POST['precio'];
+	$producto->categoria = $_POST['categoria'];
+	$producto->descripcion = $_POST['descripcion'];
+	$producto->porciones = $_POST['porciones'];
+	
+	
 	
 	$producto->editar($var);
 	
-	header('Location: ?dir=productos&accion=mostrar_brocas');	
+	header('Location: ?dir=productos&accion=mostrar');	
 	}
 	
 	public static function guardar_edicion_machuelo($var){
@@ -139,7 +135,7 @@ class ControladorAdmin{
 	
 	$producto->editar($var);
 	
-	header('Location: ?dir=productos&accion=mostrar_rimas');	
+	header('Location: ?dir=productos&accion=mostrar');	
 	}
 	
 	
@@ -168,18 +164,22 @@ class ControladorAdmin{
 	
 
 ///////GUARDAR PRODUCTOS	
-	public static function guardar_broca(){
+	public static function guardar_curso(){
 	$producto = new Producto();
 	
-	$producto->clave = $_POST['clave'];
 	$producto->nombre = $_POST['nombre'];
-	$producto->categoria = '1'.$_POST['a'].$_POST['b'].$_POST['c'].$_POST['d'];
+	$producto->duracion = $_POST['duracion'];
+	$producto->horario = $_POST['horario'];
+	$producto->costo = $_POST['costo'];
 	$producto->descripcion = $_POST['descripcion'];
-	$producto->cantidad = $_POST['cantidad'];
-	$producto->cantidad_real = $_POST['cantidad_real'];
-	$producto->precio = $_POST['precio'];
 	
-	$producto->guardar_broca();
+	echo $producto->nombre."<br>";
+	echo $producto->duracion."<br>";
+	echo $producto->horario."<br>";
+	echo $producto->costo."<br>";
+	echo $producto->descripcion."<br>";
+		
+	$producto->guardar_curso();
 	
 	header('Location: ?dir=productos&accion=mostrar_brocas');	
 	}

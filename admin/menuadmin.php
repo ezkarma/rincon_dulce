@@ -18,7 +18,7 @@
 
 	
 	<br>
-	<center><img src='../assets/imagenes/logo.jpg'/></center>
+	
 	<br><br>
 	<style type="text/css">	 
 	.izquierda {  
@@ -31,15 +31,13 @@
 	
   </style>  
   
-  <?php 
+<?php 
 	require("../modelo/Producto.php");
 	require("../modelo/connectionClass.php");
 	require("../controlador/controladorAdmin.php");	
 	require("../modelo/Admin.php");		
 	include("../assets/h_admin.html");	
-	session_start();
-	
-	
+	session_start();	
 ?>
 
 <?php	
@@ -90,9 +88,20 @@
 				}
 			;break;
 			
+			case 'cursos': if(!empty($_GET["accion"])){			
+					if($_GET["accion"]=='agregar'){
+						ControladorAdmin::agregar_curso();
+					}
+					
+					if($_GET["accion"]=='guardar'){
+						ControladorAdmin::guardar_curso();
+					}
+			};break;
+		
+			
 			case 'productos': if(!empty($_GET["accion"])){			
 					if($_GET["accion"]=='agregar'){
-						ControladorAdmin::agregar_broca();
+						ControladorAdmin::agregar_producto();
 					}
 						if($_GET["accion"]=='agregar_machuelo'){
 						ControladorAdmin::agregar_machuelo();
@@ -149,9 +158,9 @@
 					
 					//GUARDAR EDICION
 					
-					if($_GET["accion"]=='guardaredicion_broca'){
+					if($_GET["accion"]=='guardaredicion'){
 						$clave=$_GET["clave"];
-						ControladorAdmin::guardar_edicion_broca( $clave);						
+						ControladorAdmin::guardar_edicion( $clave);						
 					}
 					
 					if($_GET["accion"]=='guardaredicion_machuelo'){
@@ -173,7 +182,6 @@
 			
 		}
 	}
-	else echo "<br><center><img src='../images/admin.png'/></center>";
 	
 	}
 	else{

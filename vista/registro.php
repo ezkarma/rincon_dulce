@@ -1,10 +1,8 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!--MOSTRAR ERRORES-->
-	<script src="/assets/validacion/jquery.validate.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="/assets/validacion/errores.css" type="text/css">
-
-	
+	<script src="assets/validacion/jquery.validate.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="assets/validacion/errores.css" type="text/css">
 		
 	
 <script>
@@ -42,7 +40,7 @@
 	</script>
 	
 <div style="width:1000px">
-<form class="cmxform" id="texttests" name="myform" action="/?dir=registrar_usuario" method="post">
+<form class="cmxform" id="texttests" name="myform" action="?dir=registrar_usuario" method="post">
 <br><br>
 				
 				<font color="orange" size="5">Registre su cuenta:</font><br><br>

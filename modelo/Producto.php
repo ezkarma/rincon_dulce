@@ -60,5 +60,13 @@ class Producto{
 		
 		return true;
 	}
+	
+		public function editar($id){
+		$con = new Connection();
+		$con->start();
+				
+		$res = mysql_query("update producto set nombre='".$this->nombre."',categoria=".$this->categoria.",descripcion='".$this->descripcion."',porciones=".$this->porciones.",precio=".$this->precio." where id_producto=".$id.";");
+		return true;
+	}
 }
 ?>

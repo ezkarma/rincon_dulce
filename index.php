@@ -10,10 +10,8 @@
 	<link rel="stylesheet" href="banner/styles.css" />
 	
 	<!--ACEPTAR SOLO NUMEROS O LETRAS -->
-	<script src="/assets/validacion/validacion_nl.js" type="text/javascript"></script>
-	
-	
-	
+	<script src="assets/validacion/validacion_nl.js" type="text/javascript"></script>
+		
 	<!-- Barra de Menu -->
 	<link href="assets/css/softblue.css" rel="stylesheet" type="text/css">	
 	
@@ -60,7 +58,7 @@
 		
 	
 <?php 
-	session_start();
+	@session_start();
 	
 	require("modelo/ConnectionClass.php");
 	require("modelo/Producto.php");
@@ -210,7 +208,7 @@ echo "<br></font>";
 <?php
 if(!isset($_SESSION['logiado']) || $_SESSION['logiado']!='si'){
 ?>
-<form name="login" action="/?dir=autentificar"   method="post">
+<form name="login" action="?dir=autentificar"   method="post">
 <br><br>
 				<font color="orange" size="3">Ingrese a su cuenta:</font><br><br>
 				<font color="orange">Usuario:</font><br><input type="text" name="usuario" size="45"/><br>

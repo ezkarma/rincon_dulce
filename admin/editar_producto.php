@@ -1,89 +1,76 @@
 
 <br>	
-<font size="5">&nbsp;&nbsp;Editar Broca</font>
+<font size="5">&nbsp;&nbsp;Editar Producto</font>
 	</head>
 
 	<body>
-	<form id='texttests' name='myform' action='?dir=productos&accion=guardaredicion_broca&clave=<?php echo $_GET["clave"];?>' method='post'>;
-			
+	
+<form id='texttests' name='myform' action='?dir=productos&accion=guardaredicion&clave=<?php echo $_GET["clave"];?>' method='post'>;		
 			<center>
 				<div class="derecha">					
 					<table>
-					<tr>
-						<td align="right">Clave del Producto:</align></td>
-						<td><input id="clave" type="text" name="clave" maxlength="200"  size="50" value="<?php echo $producto->clave; ?>"/></td>
-					</tr>
+					
 					
 					<tr>
 						<td align="right">Nombre del Producto:</td>
-						<td><input id="nombre" type="text" name="nombre" maxlength="200"  size="50" value="<?php echo $producto->nombre; ?>"/></td>
+						<td><input id="nombre" type="text" name="nombre" maxlength="200" value="<?php echo $producto->nombre;?>"  size="50"/></td>
+					</tr>
+					
+				
+					
+					
+					
+				<tr>
+						<td align="right">Categoria:</td>
+						<td><select id="categoria" name="categoria">
+						<OPTION SELECTED VALUE="<?php echo $producto->categoria;?>">
+						<?php 
+						if($producto->categoria==1){
+							echo "Bodas</OPTION>";
+							echo "<option value = '2'>XV a&ntilde;os</option>	";
+							echo "<option value = '3'>Eventos Sociales</option>";
+							}
+						else if($producto->categoria==2){ 
+							echo "XV a&ntilde;os</OPTION>";
+							echo "<option value = '1'>Bodas</option>";
+							echo "<option value = '3'>Eventos Sociales</option>";
+						}
+						else if($producto->categoria==3){
+							echo "Eventos Sociales</OPTION>";
+							echo "<option value = '1'>Bodas</option>";
+							echo "<option value = '2'>XV a&ntilde;os</option>	";
+						}
+						?>
+						
+						</select></td>
 					</tr>
 					
 					<tr>
-					<td align="right">Material:</td>
-					<td><select name="a">
-						<option value = '1'>HSS</option>
-						<option value = '2'>Carburo</option>
-						<option value = '3'>Cobalto</option>		
-					</select></td>
-					</tr>
-					
-					<tr>
-					<td align="right">Medida:</td>
-					<td><select name="b">
-						<option value = '1'>Fraccional</option>
-						<option value = '2'>Milimetrica</option>		
-					</select></td>
-					</tr>
-					
-					<tr>
-					<td align="right">Longitud:</td>
-					<td><select name="c">
-						<option value = '1'>Corta</option>
-						<option value = '2'>Larga</option>		
-						<option value = '3'>10,12,18 y 24</option>	
-					</select></td>
-					</tr>
-					
-					<tr>
-					<td align="right">Para:</td>
-					<td><select name="d">
-						<option value = '1'>Materiales Suaves</option>
-						<option value = '2'>Aceros</option>		
-						<option value = '3'>Aceros Endurecidos</option>	
-						<option value = '4'>Aceros Inoxidables</option>	
-					</select></td>
-					</tr>
-					
-					<tr>
-						<td align="right">Existencia:</td>
-						<td><input id="cantidad" type="text" name="cantidad" maxlength="200"  size="50" value="<?php echo $producto->cantidad; ?>"/></td>
-					</tr>
-					
-					<tr>
-						<td align="right">Cantidad Real:</td>
-						<td><input id="cantidad_real" type="text" name="cantidad_real" maxlength="200"  size="50" value="<?php echo $producto->cantidad_real; ?>"/></td>
+						<td align="right">Porciones:</td>
+						<td><input id="porciones" type="text" name="porciones" maxlength="200" value="<?php echo $producto->porciones;?>" size="50"/></td>
 					</tr>
 					
 					<tr>
 						<td align="right">Precio:</td>
-						<td><input id="precio" type="text" name="precio" maxlength="200"  size="50" value="<?php echo $producto->precio; ?>"/></td>
+						<td><input id="precio" type="text" name="precio" maxlength="200"  value="<?php echo $producto->precio;?>"size="50"/></td>
 					</tr>
 					
 					
 					
 					</table>
 					Descripcion:<br>
-						<textarea type="text" name="descripcion"  class="field span5" rows="3"/><?php echo $producto->descripcion; ?></textarea>
+						<textarea type="text" name="descripcion"  class="field span5" rows="3"/><?php echo $producto->descripcion;?></textarea>
 					
 					<div align ="center">
 						<br>
-						<button text style="font-weight:bold;" type="submit" class="btn btn-success" value="Guardar Cambios"/>Guardar</button>&nbsp;
-						<button text style="font-weight:bold;" type="button" class="btn btn-danger" onclick="window.location='?dir=productos&accion=mostrar_brocas'">Cancelar</button>&nbsp;
+						<button text style="font-weight:bold;" type="submit" class="btn btn-success" value="Guardar Cambios"/>Guardar Cambios</button>&nbsp;
+						<button text style="font-weight:bold;" type="button" class="btn btn-danger" onclick="window.location='?dir=productos&accion=mostrar'">Cancelar</button>&nbsp;
 						<br>
 					</div><br>
 				</div>
 			</center>
 		</form>
+
+
 	</body>
 </html>
