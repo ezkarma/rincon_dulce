@@ -1,2 +1,1 @@
-
-<center><img src='assets/imagenes/contacto.png'></center>
+<div style='width:1000px'><center><img src='images/contacto.png'><center></div>

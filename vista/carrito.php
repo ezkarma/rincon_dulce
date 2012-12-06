@@ -20,9 +20,9 @@ $subtotal=$carrito->precio*$carrito->cantidad;
 <tr>
 <td><?php echo $carrito->nombre;?></td>
 <td><?php echo $carrito->precio;?></td>
-<td><input type="text" name="usuario" value="<?php echo $carrito->cantidad;?>" size="45"/></td>
+<td><?php echo $carrito->cantidad;?></td>
 <td><?php echo $subtotal;?></td>
-<td><button type="button" class="btn btn-danger" onclick="window.location='?dir=lista&accion=agregar&clave=a'">Quitar</button></td>
+<td><button type="button" class="btn btn-danger" onclick="window.location='?dir=carrito_quitar&clave=<?php echo $carrito->producto?>'">Quitar</button></td>
 <tr>
 
 <?php

@@ -147,6 +147,11 @@ class ControladorAdmin{
 		header('Location: ?dir=productos&accion=mostrar');		
 	}
 	
+	public static function eliminar_curso($var){
+		Curso::eliminar($var);
+		header('Location: ?dir=cursos&accion=mostrar');		
+	}
+	
 	public static function eliminar_machuelo($var){
 		Producto::eliminar_producto($var);
 		header('Location: ?dir=productos&accion=mostrar_machuelos');		
@@ -163,71 +168,25 @@ class ControladorAdmin{
 	}
 	
 
-///////GUARDAR PRODUCTOS	
+///////GUARDAR CURSOS	
 	public static function guardar_curso(){
-	$producto = new Producto();
+	$curso = new Curso();
 	
-	$producto->nombre = $_POST['nombre'];
-	$producto->duracion = $_POST['duracion'];
-	$producto->horario = $_POST['horario'];
-	$producto->costo = $_POST['costo'];
-	$producto->descripcion = $_POST['descripcion'];
+	$curso->nombre = $_POST['nombre'];
+	$curso->duracion = $_POST['duracion'];
+	$curso->horario = $_POST['horario'];
+	$curso->costo = $_POST['costo'];
+	$curso->descripcion = $_POST['descripcion'];
 	
-	echo $producto->nombre."<br>";
-	echo $producto->duracion."<br>";
-	echo $producto->horario."<br>";
-	echo $producto->costo."<br>";
-	echo $producto->descripcion."<br>";
+	echo $curso->nombre."<br>";
+	echo $curso->duracion."<br>";
+	echo $curso->horario."<br>";
+	echo $curso->costo."<br>";
+	echo $curso->descripcion."<br>";
 		
-	$producto->guardar_curso();
+	$curso->guardar();
 	
-	header('Location: ?dir=productos&accion=mostrar_brocas');	
-	}
-	
-	public static function guardar_machuelo(){
-	$producto = new Producto();
-	
-	$producto->clave = $_POST['clave'];
-	$producto->nombre = $_POST['nombre'];
-	$producto->categoria = '2'.$_POST['a'].$_POST['b'].$_POST['c'].$_POST['d'];
-	$producto->descripcion = $_POST['descripcion'];
-	$producto->cantidad = $_POST['cantidad'];
-	$producto->cantidad_real = $_POST['cantidad_real'];
-	$producto->precio = $_POST['precio'];
-	
-	$producto->guardar_machuelo();
-	
-	header('Location: ?dir=productos&accion=mostrar_machuelos');	
-	}
-	public static function guardar_endmills(){
-	$producto = new Producto();
-	
-	$producto->clave = $_POST['clave'];
-	$producto->nombre = $_POST['nombre'];
-	$producto->categoria = '3'.$_POST['a'].$_POST['b'].$_POST['c'].$_POST['d'].$_POST['e'].$_POST['f'];
-	$producto->descripcion = $_POST['descripcion'];
-	$producto->cantidad = $_POST['cantidad'];
-	$producto->cantidad_real = $_POST['cantidad_real'];
-	$producto->precio = $_POST['precio'];
-	
-	$producto->guardar_endmills();
-	
-	header('Location: ?dir=productos&accion=mostrar_endmills');	
-	}
-	public static function guardar_rima(){
-	$producto = new Producto();
-	
-	$producto->clave = $_POST['clave'];
-	$producto->nombre = $_POST['nombre'];
-	$producto->categoria = '4'.$_POST['a'].$_POST['b'].$_POST['c'].$_POST['d'];
-	$producto->descripcion = $_POST['descripcion'];
-	$producto->cantidad = $_POST['cantidad'];
-	$producto->cantidad_real = $_POST['cantidad_real'];
-	$producto->precio = $_POST['precio'];
-	
-	$producto->guardar_rima();
-	
-	header('Location: ?dir=productos&accion=mostrar_rimas');	
+	header('Location: ?dir=cursos&accion=mostrar');	
 	}
 	
 	public static function mostrar_video_producto_admin(){

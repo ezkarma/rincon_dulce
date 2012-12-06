@@ -30,6 +30,12 @@ class Carrito{
 	return $carritos;
 	
 	}
+	
+	public static function eliminar($clave){
+	$con = new Connection();
+	$con->start();
+	mysql_query("delete from carrito where id_producto='".$clave."' and id_cliente = '".$_SESSION['usuario']."';");
+	}
 }
 ?>
 

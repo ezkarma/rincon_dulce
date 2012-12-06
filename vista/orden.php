@@ -45,8 +45,9 @@ $total=$total+$subtotal;
 <td>Total:</td>
 <td><?php echo $total;?></td>
 </table>
-
-<font color="orange">Direccion:</font><br><input type="text" name="usuario" value="<?php echo $_SESSION['direccion'];?>" size="45"/><br>
-<td><button type="button" class="btn btn-success" onclick="window.location='?dir=lista&accion=agregar&clave=a'">Comprar</button></td>
+<form class="cmxform" id="texttests" name="myform" action="?dir=generar_pedido" method="post">
+<font color="orange">Direccion:</font><br><input type="text" name="direccion" value="<?php echo $_SESSION['direccion'];?>" size="45"/><br>
+<td><button type="button" class="btn btn-success" onclick="submit()">Comprar</button></td>
+</form>
 
 </html>

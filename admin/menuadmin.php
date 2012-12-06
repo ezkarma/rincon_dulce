@@ -34,14 +34,15 @@
 <?php 
 	require("../modelo/Producto.php");
 	require("../modelo/connectionClass.php");
+	require("../modelo/Curso.php");
 	require("../controlador/controladorAdmin.php");	
 	require("../modelo/Admin.php");		
 	include("../assets/h_admin.html");	
-	session_start();	
+	//session_start();	
 ?>
 
 <?php	
-	if(isset($_SESSION['admin'])){
+	//if(isset($_SESSION['admin'])){
 
 	if(!empty($_GET["dir"])){
 	$direccion=$_GET["dir"];
@@ -95,6 +96,15 @@
 					
 					if($_GET["accion"]=='guardar'){
 						ControladorAdmin::guardar_curso();
+					}
+					
+					if($_GET["accion"]=='mostrar'){
+						require("mostrar_cursos.php");
+					}
+					
+					if($_GET["accion"]=='eliminar'){
+						$clave=$_GET["clave"];
+						ControladorAdmin::eliminar_curso( $clave);
 					}
 			};break;
 		
@@ -183,10 +193,10 @@
 		}
 	}
 	
-	}
+	/*}
 	else{
-		header('Location: HTTP/1.0 404 Not Found');
-	}
+		//header('Location: HTTP/1.0 404 Not Found');
+	}*/
 	
 	
 ?>

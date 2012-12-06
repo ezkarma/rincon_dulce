@@ -27,7 +27,7 @@ $productos2 = Producto::cargar(2);
 $productos3 = Producto::cargar(3);
 
 echo "<font size='5'>";
-echo "<br>Brocas&nbsp&nbsp&nbsp&nbsp&nbsp</b>";
+echo "<br>Productos&nbsp&nbsp&nbsp&nbsp&nbsp</b>";
 echo "</font>";
 
 

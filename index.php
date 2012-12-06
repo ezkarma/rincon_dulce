@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <title>El Rincon Dulce</title>
   <link rel="shortcut icon" type="image/ico" href="assets/imagenes/fondo1.png"/>
-  <script src="/assets/jquery.js"></script>
+  <script src="assets/jquery.js"></script>
 	
 	<!---TEMA -->
-	<link href="../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="cart/css/styles.css" />
 	<link rel="stylesheet" href="banner/styles.css" />
 	
@@ -34,7 +34,7 @@
 	<div id="logo" align="center" ><img src='assets/imagenes/logo.jpg'>
 	<br>
 	<br>
-
+	
 	
 	<style type="text/css">	 
 	.izquierda {  
@@ -64,12 +64,15 @@
 	require("modelo/Producto.php");
 	require("modelo/Admin.php");
 	require("modelo/Carrito.php");
+	require("modelo/Curso.php");
+	require("modelo/Pedido.php");
 		
 	require("controlador/ControladorPedido.php");	
 	require("controlador/ControladorAdmin.php");
 
 	require("controlador/ControladorCatalogo.php");
 	include("assets/horizontal.html");
+	
 	
 ?>
 
@@ -93,20 +96,20 @@
 			};
 			break;
 			
-			case 'broca': if(!empty($_GET["vista"])){
-					$pagina = substr($_GET["vista"], -1);
-					
-					if ($pagina==1)	require("vista/brocas/v001.php");
-					if ($pagina==2)	require("vista/brocas/v002.php");
-					if ($pagina==3)	require("vista/brocas/v003.php");
-					if ($pagina==4)	require("vista/brocas/v004.php");
-				}
+			case 'carrito_quitar':{
+			if(!empty($_GET["clave"])){
+			$clave = $_GET["clave"];
+			echo $clave;
+			ControladorPedido::eliminar_carrito($clave);
+			}
+			}
 			;break;
 						
 			case 'autentificar': ControladorAdmin::autenticar();break;
 			case 'registro': ControladorAdmin::registro();break;
 			case 'carrito': ControladorPedido::carrito();break;
 			case 'ordenar': ControladorPedido::ordenar();break;
+			case 'generar_pedido': ControladorPedido::generar_pedido();break;
 			case 'registrar_usuario': ControladorAdmin::registrar_usuario();break;
 			case 'cuenta': echo "<font size='4' color='green'>Usted ha ingresado a su cuenta satisfactoriamente<br><br>";break;
 			case 'guardar': if(!empty($_GET["controller"])){	
@@ -177,11 +180,23 @@
 					
 			;break;
 			
-			case 'contacto': require("vista/contacto.php");
+			case 'pedidos': require("vista/pedidos.php");
 					
 			;break;
 			
-			case 'servicios': require("vista/servicios.php");
+			case 'cursos': require("vista/cursos.php");
+					
+			;break;
+			
+			case 'multimedia': require("vista/multimedia.php");
+					
+			;break;
+			
+			case 'contactanos': require("vista/contacto.php");
+					
+			;break;
+			
+			case 'comentarios': require("vista/comentarios.php");
 					
 			;break;
 			
@@ -231,7 +246,7 @@ echo "</font>";
 <br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=carrito'" value="Registrarse"/>Mi Carrito</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-info" type="button"  onClick="parent.location='?dir=editar_cuenta'" value="Registrarse"/>Editar Cuenta</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
-<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Pedidos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=pedidos'" value="Registrarse"/>Mis Pedidos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Mis Cursos</button>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-danger" type="button"  onClick="parent.location='?dir=salir'" value="Registrarse"/>Salir</button>&nbsp;&nbsp;&nbsp;&nbsp;
 <?php
@@ -247,7 +262,10 @@ echo "</font>";
 	</table>
 </center>
 
-<center><img src='images/footer.jpg'></center>
+<center><img src='images/footer.jpg'>
+<br>Visitas:<br>
+<!-- Counter Code START --><a href="http://www.e-zeeinternet.com/" target="_blank"><img src="http://www.e-zeeinternet.com/count.php?page=895757&style=blackout&nbdigits=5&reloads=1" alt="Free Counter" border="0" ></a><br><a href="http://www.e-zeeinternet.com/" title="Free Counter" target="_blank" style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000; text-decoration: none;"></a><!-- Counter Code END -->
+</center>
 
 
 </html>

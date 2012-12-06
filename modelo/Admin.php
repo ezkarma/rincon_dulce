@@ -1,5 +1,4 @@
 <?php
-//session_start();
 class Admin{
 	var  $nombre;
 	var  $apellidos;
@@ -30,7 +29,7 @@ class Admin{
 						if($row["prioridad"]==1) $_SESSION['admin'] = true;
 						
 					}	
-				if($_SESSION['admin']== true)header('Location: /admin/menuadmin.php');
+				if($_SESSION['admin']== true)header('Location: admin/menuadmin.php');
 				else header('Location: ?dir=cuenta');
 			}else{
 				$_SESSION['logiado'] = 'no';
@@ -170,7 +169,6 @@ class Admin{
 	mysql_query($qry);  
 	return true;
 	}
-	
-	
+
 }
 ?>

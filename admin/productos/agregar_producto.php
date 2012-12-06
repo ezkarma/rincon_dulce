@@ -95,23 +95,7 @@
 			</center>
 		</form>
 		
-		<form class="cmxform" id="texttests" name="myform" action="/?dir=registrar_usuario" method="post">
-<br><br>
-				
-				<font color="orange" size="5">Registre su cuenta:</font><br><br>
-				<table>
-				<tr><td align="right"><font color="orange">Nombre:</font></td><td><input type="text" name="nombre" onkeypress="return letras(event)" size="45"/></td></tr>
-				<tr><td align="right"><font color="orange">Apellidos:</font></td><td><input type="text" name="apellidos" size="45"/></td></tr>
-				<tr><td align="right"><font color="orange">Telefono:</font></td><td><input type="text" name="telefono" size="45"/></td></tr>
-				<tr><td align="right"><font color="orange">Direccion:</font></td><td><input type="text" name="direccion" size="45"/></td></tr>
-				<tr><td align="right"><font color="orange">Correo Electronico:</font></td><td><input type="text" name="usuario" size="45"/></td></tr>
-				<tr><td align="right"><font color="orange">Contrase&ntilde;a:</font></td><td><input type="password" name="contrasena" size="45"/></td></tr>
-				</table>
-				<br>
-				<button text style="font-weight:bold;" title="ingresar" name="ingresar" class="btn btn-success" type="submit" value="Ingresar"/>Registrar</button>&nbsp;&nbsp;&nbsp;&nbsp;
-				
-				
-</form>
+	
 
 
 	</body>

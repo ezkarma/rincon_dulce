@@ -36,10 +36,10 @@ class Producto{
 	
 	public function eliminar_producto($var) 
 	{
-	$con = new Connection();
-	$con->start();
-	
-	mysql_query("delete from producto where id_producto=".$var.";");  
+		$con = new Connection();
+		$con->start();
+		
+		mysql_query("delete from producto where id_producto=".$var.";");  
 	return true;
 	}
 	

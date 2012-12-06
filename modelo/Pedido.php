@@ -1,36 +1,26 @@
 <?php
 
-class Producto{
-	var  $id_producto;
-	var  $nombre;
-	var  $precio;
-	var  $categoria;
-	var  $imagen;
-	var  $descripcion;
-	var  $porciones;
+class Pedido{
+	var  $id_pedido;
+	var  $id_cliente;
+	var  $direccion;
 	
-	
-  public static function cargar($tipo){
+  public static function cargar(){
 	$con = new Connection();
 	$con->start();
 	
-	$res = mysql_query("select * from producto where categoria=".$tipo.";");
-	$productos = array();
+	$res = mysql_query("select * from pedidos where pedidos.id_cliente='".$_SESSION['usuario']."'");
+	$pedidos = array();
 	while($row = mysql_fetch_assoc($res)){
-		$tmp = new Producto();
-		$tmp->id_producto = $row["id_producto"];
-		$tmp->nombre = $row["nombre"];
-		$tmp->precio = $row["precio"];
-		$tmp->categoria = $row["categoria"];
-		$tmp->imagen = $row["imagen"];
-		$tmp->descripcion = $row["descripcion"];
-		$tmp->porciones = $row["porciones"];
-		
-		
-		$productos[] = $tmp;
+		$tmp = new Pedido();
+		$tmp->id_pedido = $row["id_pedido"];
+		$tmp->id_cliente = $row["id_cliente"];
+		$tmp->direccion = $row["direccion"];
+	
+	$pedidos[] = $tmp;
 		
 	}	
-	return $productos;
+	return $pedidos;
 	
 	}
 }
