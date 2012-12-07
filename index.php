@@ -5,7 +5,7 @@
   <script src="assets/jquery.js"></script>
 	
 	<!---TEMA -->
-	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="cart/css/styles.css" />
 	<link rel="stylesheet" href="banner/styles.css" />
 	
@@ -93,8 +93,7 @@
 			else if($_GET["categoria"]=="XV")ControladorCatalogo::mostrarXV();
 			else if($_GET["categoria"]=="eventos_sociales")ControladorCatalogo::mostrareventos_sociales();
 			}
-			};
-			break;
+			};break;
 			
 			case 'carrito_quitar':{
 			if(!empty($_GET["clave"])){
@@ -121,7 +120,7 @@
 			case 'salir': {
 			
 			$_SESSION['logiado'] = 'no';
-			header('Location:/');
+			
 			
 			}
 			;break;

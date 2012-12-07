@@ -35,7 +35,7 @@ class Pedido{
 	$con = new Connection();
 	$con->start();
 	
-	$res = mysql_query("select * from detalle_pedido,producto where detalle_pedido.id_pedido=1 and detalle_pedido.id_producto=producto.id_producto;");
+	$res = mysql_query("select * from detalle_pedido,producto where detalle_pedido.id_pedido=".$id_pedido." and detalle_pedido.id_producto=producto.id_producto;");
 	$pedidos = array();
 	while($row = mysql_fetch_assoc($res)){
 		$tmp = new Pedido();

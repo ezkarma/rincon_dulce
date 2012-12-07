@@ -2,13 +2,14 @@
 class ControladorAdmin{
 
 	public static function autenticar(){
+		//ob_end_clean();
 		$administrador = new Admin();
 		
 		$administrador->correo = strip_tags($_POST['usuario']);
 		$administrador->clave= strip_tags(sha1($_POST['contrasena']));
 	
 		$administrador->autentico();
-		
+		//@header('Location: /?dir=cuenta');
 	}
 	
 	public static function editar_cuenta(){

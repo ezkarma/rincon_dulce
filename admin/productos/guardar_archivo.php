@@ -16,7 +16,7 @@ $res = mysql_query("select count(id_producto) as total from producto;");
 	
 	}
 	
-	$num_imagen = $num_imagen + 1;
+	$num_imagen = $num_imagen + 2;
 	
 $allowedExts = array("jpg", "jpeg", "gif", "png");
 $extension = end(explode(".", $_FILES["file"]["name"]));

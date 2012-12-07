@@ -21,7 +21,7 @@ echo "<font color='black' size='5'><b>".$pastel->nombre."</b></font>";
 echo "<br><br>";
 echo "Precio: $".$pastel->precio;
 echo "<br><br>";
-echo "<i>".utf8_decode($pastel->descripcion)."</i>";
+echo "<i>".$pastel->descripcion."</i>";
 echo "<br><br>";
 echo "Numero de Porciones: ".$pastel->porciones;
 echo "<br><br>";

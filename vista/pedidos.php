@@ -9,6 +9,7 @@ $pedidos=Pedido::cargar();
 foreach($pedidos as $pedido){
 echo "Numero de Pedido: ".$pedido->id_pedido;
 echo "<br><br><br>";
+$total=0;
 
 ?>
 
@@ -28,7 +29,7 @@ $detalles = Pedido::cargar_detalle($pedido->id_pedido);
 foreach($detalles as $detalle){
 
 
-$total=0;
+
 
 
 $subtotal=$detalle->precio*$detalle->cantidad;

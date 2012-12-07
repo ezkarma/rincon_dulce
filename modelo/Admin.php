@@ -27,10 +27,25 @@ class Admin{
 						$_SESSION['nombre'] = $row["nombre"];
 						$_SESSION['direccion'] = $row["direccion"];
 						if($row["prioridad"]==1) $_SESSION['admin'] = true;
+						else $_SESSION['admin'] = false;
 						
 					}	
-				if($_SESSION['admin']== true)header('Location: admin/menuadmin.php');
-				else header('Location: ?dir=cuenta');
+				/*if($_SESSION['admin'] == true){
+				 // ensures anything dumped out will be caught
+					// clear out the output buffer
+						while (ob_get_status()) 
+						{
+							ob_end_clean();
+						}
+				header('Location: admin/menuadmin.php');
+				}
+				else {
+					
+						
+							
+						
+					header('Location: /?dir=cuenta');
+					}*/
 			}else{
 				$_SESSION['logiado'] = 'no';
 				echo "<div style='width:1000'><font color='red' size='4'><center>El usuario o password que ah ingresado son incorrectos, por favor intente de nuevo<center></font><br></div>";
